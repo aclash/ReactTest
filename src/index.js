@@ -5,9 +5,13 @@ import App from './App';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {rootReducer} from './todoList/reducer'
-const store = createStore(() => {});
+
 ReactDOM.render(
-<Provider store = {store}>
-    <App />
-</Provider>,
+    <App />,
 document.getElementById('root'));
+
+/*
+const store = createStore(() => {});
+<Provider store = {store}>
+</Provider>,
+*/
