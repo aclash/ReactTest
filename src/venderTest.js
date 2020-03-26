@@ -1,14 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import './venderTest.css'
 function Navigation(){
+    const [canShow, setShow] = useState(false);
     return (
         <React.Fragment>
         <div className="navbar">
-            <a href="#">Home</a> 
-            <a href="#">Search</a> 
-            <a href="#">Student Info</a>
+            <a href="#" onClick = {() => setShow(false)}>Home</a> 
+            <a href="#" onClick = {() => setShow(false)}>Search</a> 
+            <a href="#" onClick = {() => setShow(true)}>Student Info</a>
         </div>
-        <StudentInfo_table />
+        {canShow
+        ?  <StudentInfo_table />
+        : <p>default</p>
+      }
+        <ClickShow />
         </React.Fragment>
     );
 }
@@ -55,4 +60,30 @@ function StudentInfo_table(){
      );
 }
 
+function ClickShow(){
+    const [content, setContent] = useState("fuck world.");
+    const user1 = {
+        name: 'Alex',
+        age: 16,
+        city: 'Edison'
+    }
+    const user2 = {
+        name: 'Bob',
+        age: 18,
+        city: 'Metuchen'
+    }
+    function setUser(obj){
+        let str = "";
+        for(let item in obj)
+            str += (item.toUpperCase() + ": " + obj[item] + "  ");
+       setContent(str);
+    }
+    return (
+        <div>
+            <button onClick = {() => setUser(user1)}>user_one</button>
+            <button onClick = {() => setUser(user2)}>user_two</button>
+            <h1>{content}</h1>
+        </div>
+    );
+}
 export {Navigation};
