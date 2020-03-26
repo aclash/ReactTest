@@ -10,10 +10,6 @@ function Example(){
         setCount(preCount => preCount - 1);
     }
 
-    function change() {
-        setCount(prevCount => prevCount + 1);
-    }
-
     useEffect(() => {
         document.title = `you click ${count} times!`;
         return () => {};

@@ -10,7 +10,7 @@ function Navigation(){
             <a href="#" onClick = {() => setShow(true)}>Student Info</a>
         </div>
         {canShow
-        ?  <StudentInfo_table />
+        ?  <StudentInfo_table/>
         : <p>default</p>
       }
         <ClickShow />
@@ -20,41 +20,66 @@ function Navigation(){
 
 function renderTableHeader() {
    return (
-        <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>E-mail</th>
-        </tr>
+       <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>E-mail</th>
+            </tr>
+       </thead>
    );
  }
 
-function renderTableData() {
-    let students = [
-        { id: 1, name: 'alex', age: 21, email: 'wasif@email.com' },
-        { id: 2, name: 'bob', age: 19, email: 'ali@email.com' },
-        { id: 3, name: 'cavin', age: 16, email: 'saad@email.com' },
-        { id: 4, name: 'david', age: 25, email: 'asad@email.com' }
-     ];
-
-    return students.map((student, index) => {
-       const { id, name, age, email } = student;
-       return (
-          <tr key={id}>
-             <td>{name}</td>
-             <td>{age}</td>
-             <td>{email}</td>
-          </tr>
-       )
-    })
+function renderTableData(students) {
+    console.log(students);
+    return (
+        <tbody>
+            {students.map((student, index) => {
+            const { id, name, age, email } = student;
+            return (
+                    <tr key={name}>
+                        <td>{name}</td>
+                        <td>{age}</td>
+                        <td>{email}</td>
+                    </tr>
+            )
+            })}
+        </tbody>
+    );
  }
 
 function StudentInfo_table(){
+    const [info, setInfo] = useState({});
+    const [list, setList] = useState([]);
+    function onChange(e, type){
+        setInfo({...info, ...{[type]: e.target.value}});
+    }
+    function handleClick(){
+        setList([...list, info]);
+    }
      return (
         <div>
            <h1>Student Info</h1>
+           <br></br>
+           <input
+                type = "text"
+                onChange = {(e) => onChange(e, "name")}
+                placeholder = {"Input Name"}
+            />
+            <input
+                type = "text"
+                onChange = {(e) => onChange(e, "age")}
+                placeholder = {"Input Age"}
+            />
+            <input
+                type = "text"
+                onChange = {(e) => onChange(e, "email")}
+                placeholder = {"Input E-mail"}
+            />
+            <button onClick = {handleClick}>Submit</button>
            <table id = 'students'>
                 {renderTableHeader()}
-                {renderTableData()}
+                {renderTableData(list)}
            </table>  
         </div>
      );
@@ -86,4 +111,5 @@ function ClickShow(){
         </div>
     );
 }
+
 export {Navigation};

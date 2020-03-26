@@ -89,11 +89,12 @@ class AutoComplete extends React.Component{
                     type = "text"
                     onChange = {this.onChange}
                     onKeyDown = {this.onKeyDown}
-                    value = {this.state.userInput}
+                    placeholder = {"Input Country"}
                 />
                 {suggestionsListComponent}
             </React.Fragment>
         );
     }
 }
+
 export default AutoComplete;
