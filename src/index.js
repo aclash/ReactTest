@@ -10,9 +10,3 @@ store.dispatch(increment());
 ReactDOM.render(
     <App />,
 document.getElementById('root'));
-
-/*
-const store = createStore(() => {});
-<Provider store = {store}>
-</Provider>,
-*/
