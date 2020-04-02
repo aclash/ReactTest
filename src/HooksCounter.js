@@ -5,7 +5,7 @@ function HooksCounter(){
     const [count, setCount] = useState(0);
     useEffect(() => {
         store.dispatch(decrement2());
-        console.log(store.getState());
+        //console.log(store.getState());
     }, []);
     
     function increament(){

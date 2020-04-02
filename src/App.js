@@ -34,13 +34,13 @@ const counter = (state = 0, action) => {
 
 //STORE
 let store = createStore(counter);
-//store.subscribe(() => {console.log(store.getState())});
+store.subscribe(() => {console.log(store.getState())});
 
 //Dispath
 function AutoCounter() {
   const [count, setCount] = useState(0);
   store.dispatch(increment());
-  console.log(store.getState());
+  //console.log(store.getState());
   useEffect(() => {
     const id = setInterval(() => {
       setCount(c => c + 1); 
