@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './venderTest.css'
 function Navigation(){
     const [canShow, setShow] = useState(false);
@@ -80,7 +80,7 @@ function StudentInfo_table(){
            <table id = 'students'>
                 {renderTableHeader()}
                 {renderTableData(list)}
-           </table>  
+           </table>
         </div>
      );
 }

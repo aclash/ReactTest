@@ -1,7 +1,13 @@
 import React, {useState, useEffect} from 'react';
-function Example(){
-    const [count, setCount] = useState(0);
+import {store, decrement2} from './App'
 
+function HooksCounter(){
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+        store.dispatch(decrement2());
+        console.log(store.getState());
+    }, []);
+    
     function increament(){
         setCount(preCount => preCount + 1);
     }
@@ -24,4 +30,4 @@ function Example(){
     );
 }
 
-export default Example
+export default HooksCounter
